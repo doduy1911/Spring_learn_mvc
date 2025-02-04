@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 
 public class UserController {
@@ -17,11 +19,21 @@ public class UserController {
     }
     @GetMapping("/")
     public String getHomePage() {
+        List<User> arrUser = this.userService.getAllUserByEmail("admin@gmail.com");
+        System.out.println(arrUser);
         return "index";
     }
 
-
     @RequestMapping("/admin/user")
+    public String getAdminPage(Model model) {
+        List<User> users = this.userService.getAllUser();
+        model.addAttribute("users1", users);
+        return "admin/user/User";
+    }
+
+
+
+    @RequestMapping("/admin/user/create")
     public String User(Model model){
         model.addAttribute("newUser", new User());
         return "admin/user/create";
@@ -29,8 +41,8 @@ public class UserController {
 
     @RequestMapping(value = "/admin/user/create1",method = RequestMethod.POST)
     public String CreateUserPage(Model model,@ModelAttribute("newUser") User doduy){
-        System.out.println("aaaa"+doduy);
+        System.out.println(doduy);
         this.userService.handSaveUser(doduy);
-        return "create";
+        return "redirect:/admin/user";
     } 
 }
