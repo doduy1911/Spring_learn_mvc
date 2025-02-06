@@ -26,6 +26,9 @@ public class UserService {
         return userRepository.findByEmail(email);
 
     }
+    public List<User> getAllUserByid(long id){
+        return userRepository.findByid(id);
+    }
 
     public User handSaveUser(User user){
         User eric = userRepository.save(user);
