@@ -30,10 +30,20 @@ public class UserService {
         return userRepository.findByid(id);
     }
 
+
+    public User getUserById(long userID) {
+        return userRepository.findById(userID).orElse(null);
+    }
+
+
     public User handSaveUser(User user){
         User eric = userRepository.save(user);
-        System.out.println(eric);
+//        System.out.println(eric);
         return eric;
 
+    }
+
+    public void deleteUser(long id){
+         this.userRepository.deleteById(id);
     }
 }

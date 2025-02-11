@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cập Nhật Người Dùng </title>
+    <title>Cập nhật Người Dung</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    <title>Document</title>
 </head>
@@ -16,10 +16,13 @@
         <div class="col-md-6 col-12 mx-auto">
             <h3>Update a User</h3>
             <hr/>
-            <form:form action="/admin/user/create1" method="post" >
-                <div class="mb-3">
+            <form:form action="/admin/user/update" method="post" modelAttribute="updateUser">
+                <div class="mt-3">
+                    <form:input type="hidden" class="form-control" path="Id" readonly="true"  />
+                </div>
+                <div class="mb-3" >
                     <label class="form-label">Email:</label>
-                    <form:input type="email" class="form-control" path="email"/>
+                    <form:input type="email" class="form-control" path="email" readonly="true"/>
                     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                 </div>
                 <div class="mb-3">
@@ -38,7 +41,7 @@
                     <label class="form-label">Address</label>
                     <form:input type="text" class="form-control" path="address"/>
                 </div>
-                <button type="submit" class="btn btn-warning" >Update </button>
+                <button type="submit" class="btn btn-warning" >Upadte</button>
             </form:form>
         </div>
     </div>
